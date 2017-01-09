@@ -56,6 +56,20 @@ res.send(200);
 });
 });
 
+app.post('/edit',function(req,res){
+  pg.connect(connect, function(err, client, done){
+    if(err){
+      return console.error('error fetching client from pool',err);
+    }
+  client.query("UPDATE  devjobs SET name=$1, salary=$2, description=$3 WHERE id = $4",
+  [req.body.name, req.body.salary, req.body.description, req.body.id]);
+done();
+res.redirect('/');
+});
+
+});
+
+
 app.listen(3000, function(){
   console.log('listening on 3000');
 });

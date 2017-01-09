@@ -1,6 +1,6 @@
 {>"layout" /}
 {<body}
-<button class="btn btn-primary btn-block" data-toggle="modal" data-target="#formModal">
+<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#formModal">
     Add Job
     </button>
     {#devjobs}
@@ -12,13 +12,14 @@ aria-controls="job_{id}"><span class="glyphicon glyphicon-triangle-bottom" aria-
 </button>
 </h4>
 
-        <div class="collapse" id=job_{id}>
+        <div class="collapse" id="job_{id}">
             <br/>
             <p><strong>Salary: </strong>{salary}</p>
             <p><strong>Description: </strong>{description}</p>
             <br/>
 
-            <button class="btn btn-default edit-devjob" data-toggle="modal" data-target="editFormModal" data-id="{id}" data-name="name" data-salary="{salary}" data-description="{description}">
+            <button class="btn btn-default edit-devjob" data-toggle="modal" data-target="#editFormModal"
+             data-id="{id}" data-name="name" data-salary="{salary}" data-description="{description}">
 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 </button>
 
@@ -30,22 +31,17 @@ aria-controls="job_{id}"><span class="glyphicon glyphicon-triangle-bottom" aria-
 
     </div>
     {/devjobs}
-    <!-- Modal -->
+    <!-- ADD odal -->
     <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
-
-
-
                 <form method="post" action="/add">
 
 
-                    <input type="hidden" id="edit-form-id" name="id" />
-
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="">Add Job</h4>
+                        <h4 class="modal-title" id="myModalLabel">Add Job</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group" <label>Job Title</label>
@@ -58,63 +54,53 @@ aria-controls="job_{id}"><span class="glyphicon glyphicon-triangle-bottom" aria-
                             <textarea class="form-control" name="description"></textarea>
                         </div>
 
-
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             <input type="submit" class="btn btn-primary" value="Save" />
                         </div>
-
                 </form>
 
                 </div>
             </div>
         </div>
-
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      </div>
+        <!--edit -->
+        <div class="modal fade" id="editFormModal" tabindex="-1" role="dialog"
+         aria-labelledby="editFormModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+
                     <form method="post" action="/edit">
 
-                        <div class="modal-header" id="edit-form-id" name="id" />
+<input type="hidden" id="edit-form-id" name="id" />
 
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Add Job</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group" <label>Job Title</label>
-                        <input type="text" class="form-control" name="name" id="edit-form-name" />
-                    </div>
-                    <div class="form-group" <label>Salary</label>
-                        <textarea class="form-control " name="salary" id="edit-form-salary"></textarea>
-                    </div>
-                    <div class="form-group" <label>Description</label>
-                        <textarea class="form-control" name="description" id="edit-form-description"></textarea>
-                    </div>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Edit Job</h4>
+                        </div>
+                        <div class="form-body">
+                            <div class="form-group" <label>Job Title</label>
+                                <input type="text" id="edit-form-name" name="name" />
+                            </div>
+                            <div class="form-group" <label>Salary</label>
+                                <textarea class="form-control " name="salary" id="edit-form-salary" ></textarea>
+                            </div>
+                            <div class="form-group" <label>Description</label>
+                                <textarea class="form-control" name="description" id="edit-form-description" ></textarea>
+                            </div>
+                              </div>
 
-
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-primary" value="Save" />
-                    </div>
-
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" value="Save" />
+                            </div>
                     </form>
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" class="editFormModal">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
-        </div>
+
 
 
         {/body}
